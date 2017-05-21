@@ -1,6 +1,12 @@
 
-public class math {
+import java.util.ArrayList;
+import java.util.List;
+import org.junit.runner.JUnitCore;
+import org.junit.runner.Result;
+import org.junit.runner.notification.Failure;
 
+public class math {
+    
     public float sum(float a, float b){
         return a +b ;
     }
@@ -26,12 +32,17 @@ public class math {
         if(a == 0){
             return Float.NaN;
         }
-
+        
         return -b/a;
     }
     
     public static void main(String[] args) {
-        // TODO code application logic here
+        Result result = JUnitCore.runClasses(mathTest.class);
+        for (Failure failure : result.getFailures())
+        {
+            System.out.println("Failure ==> " + failure.toString());
+        }
     }
+    
     
 }
